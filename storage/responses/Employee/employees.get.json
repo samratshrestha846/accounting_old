@@ -1,0 +1,32 @@
+[
+    {
+        "id" : 1,
+        "first_name" : "John",
+        "last_name" : "doe",
+        "email" : "johndoe@gmail.com",
+        "contact_number": "+97709324234",
+        "gender": "Male",
+        "date_of_birth" : "1996-07-04",
+        "emp_type": null,
+        "city": null,
+        "address": null,
+        "postcode": null,
+        "avatar_url": null,
+        "join_date": null
+    },
+    {
+        "id" : 1,
+        "first_name" : "Mike",
+        "last_name" : "Typson",
+        "email" : "miketyson@gmail.com",
+        "contact_number": "+97709324234",
+        "gender": "Male",
+        "date_of_birth" : "1998-03-16",
+        "emp_type": null,
+        "city": null,
+        "address": null,
+        "postcode": null,
+        "avatar_url": null,
+        "join_date": null
+    }
+]

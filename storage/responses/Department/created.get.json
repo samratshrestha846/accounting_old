@@ -1,0 +1,14 @@
+{
+    "error": false,
+    "status": 200,
+    "message": "Department created successfully",
+    "data": {
+        "id" : 1,
+        "device_id": 1,
+        "name" : "Software Department",
+        "code" : "001",
+        "location" : "1nd Floor, New York",
+        "parent_dept": null,
+        "status": true
+    }
+}

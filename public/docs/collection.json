@@ -1,0 +1,528 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "127.0.0.1"
+        }
+    ],
+    "info": {
+        "name": "LekhaBidhi",
+        "_postman_id": "3d37733f-882c-43ac-9260-b5cf3fd5c122",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "api\/biotime\/login",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/biotime\/login",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/biotime\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"blake.weissnat@example.net\",\"password\":\"eveniet\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get a list of Position",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/biotime\/positions",
+                            "query": [
+                                {
+                                    "key": "per_page",
+                                    "value": "10",
+                                    "description": "The perpage number.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "1",
+                                    "description": "The page number.",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/biotime\/positions?per_page=10&page=1"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[\r\n    {\r\n        \"id\" : 1,\r\n        \"name\" : \"Android\"\r\n    },\r\n    {\r\n        \"id\" : 1,\r\n        \"name\" : \"Manager\"\r\n    }\r\n]\r\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create a Position",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/biotime\/positions",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/biotime\/positions"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"Software Department\",\"status\":\"\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"error\": false,\r\n    \"status\": 200,\r\n    \"data\": {\r\n        \"id\" : 1,\r\n        \"name\" : \"Android\",\r\n        \"slug\" : \"android\",\r\n        \"status\" : true,\r\n        \"created_at\" : \"2019-02-01\",\r\n        \"updated_at\" : \"2021-02-02\"\r\n    }\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get a list of devices",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/biotime\/devices",
+                            "query": [
+                                {
+                                    "key": "per_page",
+                                    "value": "10",
+                                    "description": "The perpage number.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "1",
+                                    "description": "The page number.",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/biotime\/devices?per_page=10&page=1"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n    {\n        \"id\" : 1,\n        \"name\" : \"Device 1\",\n        \"serial_number\" : \"213-234-123\",\n        \"ip_address\" : \"127.0.0.1:8000\",\n        \"state\" : \"New York\",\n        \"last_activity\" : \"2021-02-02 01:02:03\",\n        \"status\": true\n    },\n    {\n        \"id\" : 2,\n        \"name\" : \"Device 2\",\n        \"serial_number\" : \"225-234-123\",\n        \"ip_address\" : \"127.0.0.1:8201\",\n        \"state\" : \"New York\",\n        \"last_activity\" : \"2021-02-02 01:02:03\",\n        \"status\": true\n    }\n]\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"message\" : \"unauthenticated\"\n}\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get a list of departments",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/biotime\/departments",
+                            "query": [
+                                {
+                                    "key": "per_page",
+                                    "value": "10",
+                                    "description": "The perpage number.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "1",
+                                    "description": "The page number.",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/biotime\/departments?per_page=10&page=1"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[\r\n    {\r\n        \"id\" : 1,\r\n        \"name\" : \"Software Department\",\r\n        \"code\" : \"001\",\r\n        \"location\" : \"1nd Floor, New York\",\r\n        \"parent_dept\": null,\r\n        \"status\": true,\r\n        \"device\": {\r\n            \"id\" : 1,\r\n            \"name\" : \"Device 1\",\r\n            \"serial_number\" : \"213-234-123\",\r\n            \"ip_address\" : \"127.0.0.1:8000\",\r\n            \"area\" : \"New York\",\r\n            \"last_activity\" : \"2021-02-02 01:02:03\"\r\n        }\r\n    },\r\n    {\r\n        \"id\" : 1,\r\n        \"name\" : \"Android Department\",\r\n        \"code\" : \"002\",\r\n        \"location\" : \"2nd Floor, New York\",\r\n        \"parent_dept\": null,\r\n        \"status\": false,\r\n        \"device\": {\r\n            \"id\" : 1,\r\n            \"name\" : \"Device 2\",\r\n            \"serial_number\" : \"223-234-123\",\r\n            \"ip_address\" : \"127.0.0.12:8000\",\r\n            \"area\" : \"New York\",\r\n            \"last_activity\" : \"2021-02-02 01:02:03\"\r\n        }\r\n    }\r\n]\r\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get a list of Employees",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/biotime\/employees",
+                            "query": [
+                                {
+                                    "key": "per_page",
+                                    "value": "10",
+                                    "description": "The perpage number.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "1",
+                                    "description": "The page number.",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/biotime\/employees?per_page=10&page=1"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[\r\n    {\r\n        \"id\" : 1,\r\n        \"first_name\" : \"John\",\r\n        \"last_name\" : \"doe\",\r\n        \"email\" : \"johndoe@gmail.com\",\r\n        \"contact_number\": \"+97709324234\",\r\n        \"gender\": \"Male\",\r\n        \"date_of_birth\" : \"1996-07-04\",\r\n        \"emp_type\": null,\r\n        \"city\": null,\r\n        \"address\": null,\r\n        \"postcode\": null,\r\n        \"avatar_url\": null,\r\n        \"join_date\": null\r\n    },\r\n    {\r\n        \"id\" : 1,\r\n        \"first_name\" : \"Mike\",\r\n        \"last_name\" : \"Typson\",\r\n        \"email\" : \"miketyson@gmail.com\",\r\n        \"contact_number\": \"+97709324234\",\r\n        \"gender\": \"Male\",\r\n        \"date_of_birth\" : \"1998-03-16\",\r\n        \"emp_type\": null,\r\n        \"city\": null,\r\n        \"address\": null,\r\n        \"postcode\": null,\r\n        \"avatar_url\": null,\r\n        \"join_date\": null\r\n    }\r\n]\r\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update Device",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/biotime\/devices\/:device_uuid",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/biotime\/devices\/:device_uuid",
+                            "variable": [
+                                {
+                                    "id": "device_uuid",
+                                    "key": "device_uuid",
+                                    "value": "15",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"Device 1\",\"serial_number\":\"202-123-232\",\"ip_address\":\"127.0.0.1:8000\",\"area\":\"127.0.0.1:8000\",\"last_activity\":\"2021-03-03\",\"status\":true}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"error\": false,\r\n    \"status\": 200,\r\n    \"message\": \"Device updated successfully\"\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"message\" : \"unauthenticated\"\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n    \"message\" : \"No query for the model App\\\\Model found\"\n}\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create a New Device",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/biotime\/devices",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/biotime\/devices"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"uuid\":\"001\",\"name\":\"Device 1\",\"serial_number\":\"202-123-232\",\"ip_address\":\"127.0.0.1:8000\",\"area\":\"127.0.0.1:8000\",\"last_activity\":\"2021-03-03\",\"status\":true}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"error\": false,\r\n    \"status\": 200,\r\n    \"message\": \"Device created successfully\",\r\n    \"data\": {\r\n        \"id\" : 1,\r\n        \"name\" : \"Device 1\",\r\n        \"serial_number\" : \"213-234-123\",\r\n        \"ip_address\" : \"127.0.0.1:8000\",\r\n        \"state\" : \"New York\",\r\n        \"last_activity\" : \"2021-02-02 01:02:03\",\r\n        \"status\": true\r\n    }\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"message\" : \"unauthenticated\"\n}\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create a Staff Attendance",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/biotime\/employees\/attendances",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/biotime\/employees\/attendances"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"device_id\":\"1\",\"employee_id\":\"001\",\"date\":\"2021-03-04\",\"in_time\":\"01:02:03\",\"out_time\":\"02:02:03\",\"remarks\":\"Early leave\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"error\": false,\r\n    \"status\": 201,\r\n    \"message\": \"Staff attendance created successfully\",\r\n    \"data\": {\r\n        \"id\" : 1,\r\n        \"staff_id\" : 1,\r\n        \"date\" : \"2021-03-03\",\r\n        \"in_time\" : \"01:02:03\",\r\n        \"out_time\": \"02:03:30\",\r\n        \"remarks\": \"Early leave\"\r\n    }\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"message\" : \"unauthenticated\"\n}\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create a Department",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/biotime\/departments",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/biotime\/departments"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"device\":\"eveniet\",\"name\":\"Software Department\",\"code\":\"001\",\"location\":\"New York\",\"device_id\":1}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"error\": false,\r\n    \"status\": 200,\r\n    \"message\": \"Department created successfully\",\r\n    \"data\": {\r\n        \"id\" : 1,\r\n        \"device_id\": 1,\r\n        \"name\" : \"Software Department\",\r\n        \"code\" : \"001\",\r\n        \"location\" : \"1nd Floor, New York\",\r\n        \"parent_dept\": null,\r\n        \"status\": true\r\n    }\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create a New Employee",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/biotime\/employees",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/biotime\/employees"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"employee_id\":\"emp-001\",\"email\":\"bette.wintheiser@example.net\",\"department\":1,\"position\":1,\"first_name\":\"John\",\"last_name\":\"doe\",\"gender\":\"Male\",\"emp_type\":\"Permanent\",\"phone\":\"98243324234\",\"date_of_birth\":\"1988-03-03\",\"city\":\"New York\",\"address\":\"New York\",\"postcode\":\"44001\",\"join_date\":\"2021-03-04\",\"image\":\"\\\/image\\\/uplodas\\\/imag1.png\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"error\": false,\r\n    \"status\": 200,\r\n    \"data\": {\r\n        \"id\" : 1,\r\n        \"first_name\" : \"Mike\",\r\n        \"last_name\" : \"Typson\",\r\n        \"email\" : \"miketyson@gmail.com\",\r\n        \"contact_number\": \"+97709324234\",\r\n        \"gender\": \"Male\",\r\n        \"date_of_birth\" : \"1998-03-16\",\r\n        \"emp_type\": null,\r\n        \"city\": null,\r\n        \"address\": null,\r\n        \"postcode\": null,\r\n        \"avatar_url\": null,\r\n        \"join_date\": null\r\n    }\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}

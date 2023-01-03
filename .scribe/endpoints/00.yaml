@@ -1,0 +1,685 @@
+name: Endpoints
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/biotime/login
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: blake.weissnat@example.net
+        type: string
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: eveniet
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/biotime/positions
+    metadata:
+      title: 'Get a list of Position'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      per_page:
+        name: per_page
+        description: 'The perpage number.'
+        required: false
+        example: 10
+        type: integer
+        custom: []
+      page:
+        name: page
+        description: 'The page number.'
+        required: false
+        example: 1
+        type: integer
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: "[\r\n    {\r\n        \"id\" : 1,\r\n        \"name\" : \"Android\"\r\n    },\r\n    {\r\n        \"id\" : 1,\r\n        \"name\" : \"Manager\"\r\n    }\r\n]\r\n"
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/biotime/positions
+    metadata:
+      title: 'Create a Position'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'The name of the position.'
+        required: true
+        example: 'Software Department'
+        type: string
+        custom: []
+      status:
+        name: status
+        description: 'Must be between 0 and 1 digits.'
+        required: false
+        example: ''
+        type: string
+        custom: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"error\": false,\r\n    \"status\": 200,\r\n    \"data\": {\r\n        \"id\" : 1,\r\n        \"name\" : \"Android\",\r\n        \"slug\" : \"android\",\r\n        \"status\" : true,\r\n        \"created_at\" : \"2019-02-01\",\r\n        \"updated_at\" : \"2021-02-02\"\r\n    }\r\n}\r\n"
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/biotime/devices
+    metadata:
+      title: 'Get a list of devices'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      per_page:
+        name: per_page
+        description: 'The perpage number.'
+        required: false
+        example: 10
+        type: integer
+        custom: []
+      page:
+        name: page
+        description: 'The page number.'
+        required: false
+        example: 1
+        type: integer
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |
+          [
+              {
+                  "id" : 1,
+                  "name" : "Device 1",
+                  "serial_number" : "213-234-123",
+                  "ip_address" : "127.0.0.1:8000",
+                  "state" : "New York",
+                  "last_activity" : "2021-02-02 01:02:03",
+                  "status": true
+              },
+              {
+                  "id" : 2,
+                  "name" : "Device 2",
+                  "serial_number" : "225-234-123",
+                  "ip_address" : "127.0.0.1:8201",
+                  "state" : "New York",
+                  "last_activity" : "2021-02-02 01:02:03",
+                  "status": true
+              }
+          ]
+        headers: []
+        description: '200'
+      -
+        status: 401
+        content: |
+          {
+              "message" : "unauthenticated"
+          }
+        headers: []
+        description: '401'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/biotime/departments
+    metadata:
+      title: 'Get a list of departments'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      per_page:
+        name: per_page
+        description: 'The perpage number.'
+        required: false
+        example: 10
+        type: integer
+        custom: []
+      page:
+        name: page
+        description: 'The page number.'
+        required: false
+        example: 1
+        type: integer
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: "[\r\n    {\r\n        \"id\" : 1,\r\n        \"name\" : \"Software Department\",\r\n        \"code\" : \"001\",\r\n        \"location\" : \"1nd Floor, New York\",\r\n        \"parent_dept\": null,\r\n        \"status\": true,\r\n        \"device\": {\r\n            \"id\" : 1,\r\n            \"name\" : \"Device 1\",\r\n            \"serial_number\" : \"213-234-123\",\r\n            \"ip_address\" : \"127.0.0.1:8000\",\r\n            \"area\" : \"New York\",\r\n            \"last_activity\" : \"2021-02-02 01:02:03\"\r\n        }\r\n    },\r\n    {\r\n        \"id\" : 1,\r\n        \"name\" : \"Android Department\",\r\n        \"code\" : \"002\",\r\n        \"location\" : \"2nd Floor, New York\",\r\n        \"parent_dept\": null,\r\n        \"status\": false,\r\n        \"device\": {\r\n            \"id\" : 1,\r\n            \"name\" : \"Device 2\",\r\n            \"serial_number\" : \"223-234-123\",\r\n            \"ip_address\" : \"127.0.0.12:8000\",\r\n            \"area\" : \"New York\",\r\n            \"last_activity\" : \"2021-02-02 01:02:03\"\r\n        }\r\n    }\r\n]\r\n"
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/biotime/employees
+    metadata:
+      title: 'Get a list of Employees'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      per_page:
+        name: per_page
+        description: 'The perpage number.'
+        required: false
+        example: 10
+        type: integer
+        custom: []
+      page:
+        name: page
+        description: 'The page number.'
+        required: false
+        example: 1
+        type: integer
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: "[\r\n    {\r\n        \"id\" : 1,\r\n        \"first_name\" : \"John\",\r\n        \"last_name\" : \"doe\",\r\n        \"email\" : \"johndoe@gmail.com\",\r\n        \"contact_number\": \"+97709324234\",\r\n        \"gender\": \"Male\",\r\n        \"date_of_birth\" : \"1996-07-04\",\r\n        \"emp_type\": null,\r\n        \"city\": null,\r\n        \"address\": null,\r\n        \"postcode\": null,\r\n        \"avatar_url\": null,\r\n        \"join_date\": null\r\n    },\r\n    {\r\n        \"id\" : 1,\r\n        \"first_name\" : \"Mike\",\r\n        \"last_name\" : \"Typson\",\r\n        \"email\" : \"miketyson@gmail.com\",\r\n        \"contact_number\": \"+97709324234\",\r\n        \"gender\": \"Male\",\r\n        \"date_of_birth\" : \"1998-03-16\",\r\n        \"emp_type\": null,\r\n        \"city\": null,\r\n        \"address\": null,\r\n        \"postcode\": null,\r\n        \"avatar_url\": null,\r\n        \"join_date\": null\r\n    }\r\n]\r\n"
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - PATCH
+    uri: 'api/biotime/devices/{device_uuid}'
+    metadata:
+      title: 'Update Device'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      device_uuid:
+        name: device_uuid
+        description: ''
+        required: true
+        example: 15
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'The name of the device.'
+        required: true
+        example: 'Device 1'
+        type: string
+        custom: []
+      serial_number:
+        name: serial_number
+        description: 'The serial number of the device.'
+        required: true
+        example: 202-123-232
+        type: string
+        custom: []
+      ip_address:
+        name: ip_address
+        description: 'The ip address of the device.'
+        required: true
+        example: '127.0.0.1:8000'
+        type: string
+        custom: []
+      area:
+        name: area
+        description: 'The area of the device.'
+        required: true
+        example: '127.0.0.1:8000'
+        type: string
+        custom: []
+      last_activity:
+        name: last_activity
+        description: 'The last activity date of the device.'
+        required: true
+        example: '2021-03-03'
+        type: string
+        custom: []
+      status:
+        name: status
+        description: 'The status of the device.'
+        required: false
+        example: true
+        type: boolean
+        custom: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"error\": false,\r\n    \"status\": 200,\r\n    \"message\": \"Device updated successfully\"\r\n}\r\n"
+        headers: []
+        description: '200'
+      -
+        status: 401
+        content: |
+          {
+              "message" : "unauthenticated"
+          }
+        headers: []
+        description: '401'
+      -
+        status: 404
+        content: |
+          {
+              "message" : "No query for the model App\\Model found"
+          }
+        headers: []
+        description: '404'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/biotime/devices
+    metadata:
+      title: 'Create a New Device'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      uuid:
+        name: uuid
+        description: 'The uuid of the device.'
+        required: true
+        example: '001'
+        type: string
+        custom: []
+      name:
+        name: name
+        description: 'The name of the device.'
+        required: true
+        example: 'Device 1'
+        type: string
+        custom: []
+      serial_number:
+        name: serial_number
+        description: 'The serial number of the device.'
+        required: true
+        example: 202-123-232
+        type: string
+        custom: []
+      ip_address:
+        name: ip_address
+        description: 'The ip address of the device.'
+        required: true
+        example: '127.0.0.1:8000'
+        type: string
+        custom: []
+      area:
+        name: area
+        description: 'The area of the device.'
+        required: true
+        example: '127.0.0.1:8000'
+        type: string
+        custom: []
+      last_activity:
+        name: last_activity
+        description: 'nullable The last activity date of the device.'
+        required: false
+        example: '2021-03-03'
+        type: string
+        custom: []
+      status:
+        name: status
+        description: 'The status of the device.'
+        required: false
+        example: true
+        type: boolean
+        custom: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"error\": false,\r\n    \"status\": 200,\r\n    \"message\": \"Device created successfully\",\r\n    \"data\": {\r\n        \"id\" : 1,\r\n        \"name\" : \"Device 1\",\r\n        \"serial_number\" : \"213-234-123\",\r\n        \"ip_address\" : \"127.0.0.1:8000\",\r\n        \"state\" : \"New York\",\r\n        \"last_activity\" : \"2021-02-02 01:02:03\",\r\n        \"status\": true\r\n    }\r\n}\r\n"
+        headers: []
+        description: '200'
+      -
+        status: 401
+        content: |
+          {
+              "message" : "unauthenticated"
+          }
+        headers: []
+        description: '401'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/biotime/employees/attendances
+    metadata:
+      title: 'Create a Staff Attendance'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      device_id:
+        name: device_id
+        description: 'The id of the device.'
+        required: true
+        example: '1'
+        type: string
+        custom: []
+      employee_id:
+        name: employee_id
+        description: 'The employee id of the employee.'
+        required: true
+        example: '001'
+        type: string
+        custom: []
+      date:
+        name: date
+        description: 'The date of the attendance.'
+        required: true
+        example: '2021-03-04'
+        type: string
+        custom: []
+      in_time:
+        name: in_time
+        description: 'The Enter time of the employee in the office.'
+        required: true
+        example: '01:02:03'
+        type: string
+        custom: []
+      out_time:
+        name: out_time
+        description: 'nullable The exit time of the employeee from the office.'
+        required: false
+        example: '02:02:03'
+        type: string
+        custom: []
+      remarks:
+        name: remarks
+        description: 'The remarks of the attendance.'
+        required: false
+        example: 'Early leave'
+        type: nullable
+        custom: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"error\": false,\r\n    \"status\": 201,\r\n    \"message\": \"Staff attendance created successfully\",\r\n    \"data\": {\r\n        \"id\" : 1,\r\n        \"staff_id\" : 1,\r\n        \"date\" : \"2021-03-03\",\r\n        \"in_time\" : \"01:02:03\",\r\n        \"out_time\": \"02:03:30\",\r\n        \"remarks\": \"Early leave\"\r\n    }\r\n}\r\n"
+        headers: []
+        description: '200'
+      -
+        status: 401
+        content: |
+          {
+              "message" : "unauthenticated"
+          }
+        headers: []
+        description: '401'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/biotime/departments
+    metadata:
+      title: 'Create a Department'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      device:
+        name: device
+        description: ''
+        required: true
+        example: eveniet
+        type: string
+        custom: []
+      name:
+        name: name
+        description: 'The name of the department.'
+        required: true
+        example: 'Software Department'
+        type: string
+        custom: []
+      code:
+        name: code
+        description: 'The code of the department.'
+        required: true
+        example: '001'
+        type: string
+        custom: []
+      location:
+        name: location
+        description: 'The location of the department.'
+        required: true
+        example: 'New York'
+        type: string
+        custom: []
+      device_id:
+        name: device_id
+        description: 'The id of the device.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"error\": false,\r\n    \"status\": 200,\r\n    \"message\": \"Department created successfully\",\r\n    \"data\": {\r\n        \"id\" : 1,\r\n        \"device_id\": 1,\r\n        \"name\" : \"Software Department\",\r\n        \"code\" : \"001\",\r\n        \"location\" : \"1nd Floor, New York\",\r\n        \"parent_dept\": null,\r\n        \"status\": true\r\n    }\r\n}\r\n"
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/biotime/employees
+    metadata:
+      title: 'Create a New Employee'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      employee_id:
+        name: employee_id
+        description: 'The employee id of the employee.'
+        required: true
+        example: emp-001
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: bette.wintheiser@example.net
+        type: string
+        custom: []
+      department:
+        name: department
+        description: 'The id of the department.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+      position:
+        name: position
+        description: 'The id of the position.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+      first_name:
+        name: first_name
+        description: 'The first name of the employee.'
+        required: true
+        example: John
+        type: string
+        custom: []
+      last_name:
+        name: last_name
+        description: 'The last name of the emmployee.'
+        required: true
+        example: doe
+        type: string
+        custom: []
+      gender:
+        name: gender
+        description: 'nullable The gender of the emmployee(Male, Female, Other).'
+        required: false
+        example: Male
+        type: string
+        custom: []
+      emp_type:
+        name: emp_type
+        description: 'nullable The emmployee type of the emmployee.'
+        required: false
+        example: Permanent
+        type: string
+        custom: []
+      phone:
+        name: phone
+        description: 'nullable The contact number of the emmployee.'
+        required: false
+        example: '98243324234'
+        type: string
+        custom: []
+      date_of_birth:
+        name: date_of_birth
+        description: 'nullable The date of birth of the emmployee.'
+        required: false
+        example: '1988-03-03'
+        type: string
+        custom: []
+      city:
+        name: city
+        description: 'nullable The last name of the emmployee.'
+        required: false
+        example: 'New York'
+        type: string
+        custom: []
+      address:
+        name: address
+        description: 'nullable The last name of the emmployee.'
+        required: false
+        example: 'New York'
+        type: string
+        custom: []
+      postcode:
+        name: postcode
+        description: 'nullable The last name of the emmployee.'
+        required: false
+        example: '44001'
+        type: string
+        custom: []
+      join_date:
+        name: join_date
+        description: 'nullable The last name of the emmployee.'
+        required: false
+        example: '2021-03-04'
+        type: string
+        custom: []
+      image:
+        name: image
+        description: 'nullable The last name of the emmployee.'
+        required: false
+        example: /image/uplodas/imag1.png
+        type: image
+        custom: []
+      national_id:
+        name: national_id
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      documents:
+        name: documents
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      contract:
+        name: contract
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"error\": false,\r\n    \"status\": 200,\r\n    \"data\": {\r\n        \"id\" : 1,\r\n        \"first_name\" : \"Mike\",\r\n        \"last_name\" : \"Typson\",\r\n        \"email\" : \"miketyson@gmail.com\",\r\n        \"contact_number\": \"+97709324234\",\r\n        \"gender\": \"Male\",\r\n        \"date_of_birth\" : \"1998-03-16\",\r\n        \"emp_type\": null,\r\n        \"city\": null,\r\n        \"address\": null,\r\n        \"postcode\": null,\r\n        \"avatar_url\": null,\r\n        \"join_date\": null\r\n    }\r\n}\r\n"
+        headers: []
+        description: '200'
+    responseFields: []

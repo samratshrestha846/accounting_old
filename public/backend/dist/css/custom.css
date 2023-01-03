@@ -1,0 +1,163 @@
+.delete-btn {
+    position: relative;
+}
+
+.delete {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    position: absolute;
+    background: #fe0000;
+    font-weight: bold;
+    top: -5px;
+    left: -3px;
+    font-family: Verdana;
+    height: 13px;
+    width: 13px;
+    text-align: center;
+    line-height: 13px;
+    border-radius: 100%;
+    border: none;
+    font-size: 7px;
+}
+.delete:hover{
+    background: #dc0000;
+    color:#fff;
+    text-decoration: none;
+}
+/*
+.ch-wrap .btn {
+    padding: 7px 15px;
+    font-size: 14px;
+    border-radius: 4px;
+} */
+
+.ch-wrap {
+    background: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 15%);
+}
+
+.ch-wrap h1 {
+    font-size: 22px;
+}
+.s-title span {
+    display: inline-block;
+    color: #ffffff;
+    font-size: 18px;
+    background: #3490dc;
+    padding: 9px 15px;
+    border-radius: 3px;
+}
+.ibox {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 15%);
+}
+.s-title {
+    margin-bottom: 15px;
+}
+.v-add {
+    display: flex;
+    align-items: center;
+}
+
+
+.delete:hover{
+    background: #dc0000;
+    color:#fff;
+    text-decoration: none;
+}
+​
+.ch-wrap .btn {
+    padding: 7px 15px;
+    font-size: 14px;
+    border-radius: 4px;
+}
+​
+.ch-wrap {
+    background: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 15%);
+}
+​
+.ch-wrap h1 {
+    font-size: 22px;
+}
+.s-title span {
+    display: inline-block;
+    color: #ffffff;
+    font-size: 18px;
+    background: #3490dc;
+    padding: 9px 15px;
+    border-radius: 3px;
+}
+.ibox {
+    background: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 15%);
+}
+.s-title {
+    margin-bottom: 15px;
+}
+.v-add {
+    display: flex;
+    align-items: center;
+}
+​
+.v-add .btn {
+    margin-left: 15px;
+}
+.ibox .form-control {
+    height: 35px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    font-size: 14px !important;
+}
+.ibox .form-control:focus{
+    outline: none;
+    box-shadow: none;
+    border: 1px solid #e0e0e0;
+}
+.v-add .btn {
+    height: 35px;
+    padding: 7px 13px;
+    border: none;
+    border-radius: 4px;
+}
+.btn:focus{
+    outline: none !important;
+    box-shadow: none !important;
+}
+.ibox textarea.form-control {
+    height: 100px;
+}
+.ibox table {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+​
+.ibox table th {
+    background: #f5f5f5;
+    border-bottom: none !important;
+}
+.ibox table td {
+    vertical-align: middle;
+    text-align: center;
+    white-space: nowrap;
+    padding: 3px;
+    background: #fff;
+}
+.ibox .row {
+    align-items: center;
+}
+
+
+
+tr.item-row.select-error {
+    background: #ff000024;
+}

@@ -1,0 +1,2040 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>LekhaBidhi Documentation</title>
+
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../docs/css/theme-default.style.css" media="screen">
+    <link rel="stylesheet" href="../docs/css/theme-default.print.css" media="print">
+
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/@highlightjs/cdn-assets@10.7.2/styles/obsidian.min.css">
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@10.7.2/highlight.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jets/0.14.1/jets.min.js"></script>
+
+    <style id="language-style">
+        /* starts out as display none and is replaced with js later  */
+                    body .content .bash-example code { display: none; }
+                    body .content .javascript-example code { display: none; }
+            </style>
+
+    <script>
+        var baseUrl = "http://127.0.0.1:8000/";
+        var useCsrf = Boolean();
+        var csrfUrl = "/sanctum/csrf-cookie";
+    </script>
+    <script src="../docs/js/tryitout-3.20.0.js"></script>
+
+    <script src="../docs/js/theme-default-3.20.0.js"></script>
+
+</head>
+
+<body data-languages="[&quot;bash&quot;,&quot;javascript&quot;]">
+
+<a href="#" id="nav-button">
+    <span>
+        MENU
+        <img src="../docs/images/navbar.png" alt="navbar-image" />
+    </span>
+</a>
+<div class="tocify-wrapper">
+    
+            <div class="lang-selector">
+                                            <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                            <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                    </div>
+    
+    <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+
+    <div id="toc">
+                                                                            <ul id="tocify-header-0" class="tocify-header">
+                    <li class="tocify-item level-1" data-unique="introduction">
+                        <a href="#introduction">Introduction</a>
+                    </li>
+                                            
+                                                                    </ul>
+                                                <ul id="tocify-header-1" class="tocify-header">
+                    <li class="tocify-item level-1" data-unique="authenticating-requests">
+                        <a href="#authenticating-requests">Authenticating requests</a>
+                    </li>
+                                            
+                                                </ul>
+                    
+                    <ul id="tocify-header-2" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="endpoints">
+                    <a href="#endpoints">Endpoints</a>
+                </li>
+                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-biotime-login">
+                        <a href="#endpoints-POSTapi-biotime-login">POST api/biotime/login</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-biotime-positions">
+                        <a href="#endpoints-GETapi-biotime-positions">Get a list of Position</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-biotime-positions">
+                        <a href="#endpoints-POSTapi-biotime-positions">Create a Position</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-biotime-devices">
+                        <a href="#endpoints-GETapi-biotime-devices">Get a list of devices</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-biotime-departments">
+                        <a href="#endpoints-GETapi-biotime-departments">Get a list of departments</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-biotime-employees">
+                        <a href="#endpoints-GETapi-biotime-employees">Get a list of Employees</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-PATCHapi-biotime-devices--device_uuid-">
+                        <a href="#endpoints-PATCHapi-biotime-devices--device_uuid-">Update Device</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-biotime-devices">
+                        <a href="#endpoints-POSTapi-biotime-devices">Create a New Device</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-biotime-employees-attendances">
+                        <a href="#endpoints-POSTapi-biotime-employees-attendances">Create a Staff Attendance</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-biotime-departments">
+                        <a href="#endpoints-POSTapi-biotime-departments">Create a Department</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-biotime-employees">
+                        <a href="#endpoints-POSTapi-biotime-employees">Create a New Employee</a>
+                    </li>
+                                                    </ul>
+                            </ul>
+        
+                        
+            </div>
+
+            <ul class="toc-footer" id="toc-footer">
+                            <li><a href="../docs/collection.json">View Postman collection</a></li>
+                            <li><a href="../docs/openapi.yaml">View OpenAPI spec</a></li>
+                            <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
+                    </ul>
+        <ul class="toc-footer" id="last-updated">
+        <li>Last updated: December 30 2021</li>
+    </ul>
+</div>
+
+<div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+        <h1 id="introduction">Introduction</h1>
+<p>This documentation aims to provide all the information you need to work with our API.</p>
+<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
+You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+<blockquote>
+<p>Base URL</p>
+</blockquote>
+<pre><code class="language-yaml">http://127.0.0.1:8000/</code></pre>
+
+        <h1 id="authenticating-requests">Authenticating requests</h1>
+<p>This API is not authenticated.</p>
+
+        <h1 id="endpoints">Endpoints</h1>
+
+    
+
+            <h2 id="endpoints-POSTapi-biotime-login">POST api/biotime/login</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-biotime-login">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/biotime/login" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"email\": \"blake.weissnat@example.net\",
+    \"password\": \"eveniet\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/biotime/login"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "blake.weissnat@example.net",
+    "password": "eveniet"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-biotime-login">
+</span>
+<span id="execution-results-POSTapi-biotime-login" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-biotime-login"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-biotime-login"></code></pre>
+</span>
+<span id="execution-error-POSTapi-biotime-login" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-biotime-login"></code></pre>
+</span>
+<form id="form-POSTapi-biotime-login" data-method="POST"
+      data-path="api/biotime/login"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-biotime-login', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-biotime-login"
+                    onclick="tryItOut('POSTapi-biotime-login');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-biotime-login"
+                    onclick="cancelTryOut('POSTapi-biotime-login');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-biotime-login" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/biotime/login</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>email</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="email"
+               data-endpoint="POSTapi-biotime-login"
+               value="blake.weissnat@example.net"
+               data-component="body" hidden>
+    <br>
+<p>Must be a valid email address.</p>
+        </p>
+                <p>
+            <b><code>password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="password"
+               data-endpoint="POSTapi-biotime-login"
+               value="eveniet"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+        </form>
+
+            <h2 id="endpoints-GETapi-biotime-positions">Get a list of Position</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-biotime-positions">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/biotime/positions?per_page=10&amp;page=1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/biotime/positions"
+);
+
+const params = {
+    "per_page": "10",
+    "page": "1",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-biotime-positions">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">[
+    {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Android&quot;
+    },
+    {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Manager&quot;
+    }
+]</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-biotime-positions" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-biotime-positions"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-biotime-positions"></code></pre>
+</span>
+<span id="execution-error-GETapi-biotime-positions" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-biotime-positions"></code></pre>
+</span>
+<form id="form-GETapi-biotime-positions" data-method="GET"
+      data-path="api/biotime/positions"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-biotime-positions', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-biotime-positions"
+                    onclick="tryItOut('GETapi-biotime-positions');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-biotime-positions"
+                    onclick="cancelTryOut('GETapi-biotime-positions');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-biotime-positions" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/biotime/positions</code></b>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <p>
+                <b><code>per_page</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="per_page"
+               data-endpoint="GETapi-biotime-positions"
+               value="10"
+               data-component="query" hidden>
+    <br>
+<p>The perpage number.</p>
+            </p>
+                    <p>
+                <b><code>page</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="page"
+               data-endpoint="GETapi-biotime-positions"
+               value="1"
+               data-component="query" hidden>
+    <br>
+<p>The page number.</p>
+            </p>
+                </form>
+
+            <h2 id="endpoints-POSTapi-biotime-positions">Create a Position</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-biotime-positions">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/biotime/positions" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"Software Department\",
+    \"status\": \"\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/biotime/positions"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "Software Department",
+    "status": ""
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-biotime-positions">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;status&quot;: 200,
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Android&quot;,
+        &quot;slug&quot;: &quot;android&quot;,
+        &quot;status&quot;: true,
+        &quot;created_at&quot;: &quot;2019-02-01&quot;,
+        &quot;updated_at&quot;: &quot;2021-02-02&quot;
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-biotime-positions" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-biotime-positions"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-biotime-positions"></code></pre>
+</span>
+<span id="execution-error-POSTapi-biotime-positions" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-biotime-positions"></code></pre>
+</span>
+<form id="form-POSTapi-biotime-positions" data-method="POST"
+      data-path="api/biotime/positions"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-biotime-positions', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-biotime-positions"
+                    onclick="tryItOut('POSTapi-biotime-positions');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-biotime-positions"
+                    onclick="cancelTryOut('POSTapi-biotime-positions');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-biotime-positions" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/biotime/positions</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="name"
+               data-endpoint="POSTapi-biotime-positions"
+               value="Software Department"
+               data-component="body" hidden>
+    <br>
+<p>The name of the position.</p>
+        </p>
+                <p>
+            <b><code>status</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="status"
+               data-endpoint="POSTapi-biotime-positions"
+               value=""
+               data-component="body" hidden>
+    <br>
+<p>Must be between 0 and 1 digits.</p>
+        </p>
+        </form>
+
+            <h2 id="endpoints-GETapi-biotime-devices">Get a list of devices</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-biotime-devices">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/biotime/devices?per_page=10&amp;page=1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/biotime/devices"
+);
+
+const params = {
+    "per_page": "10",
+    "page": "1",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-biotime-devices">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">[
+    {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Device 1&quot;,
+        &quot;serial_number&quot;: &quot;213-234-123&quot;,
+        &quot;ip_address&quot;: &quot;127.0.0.1:8000&quot;,
+        &quot;state&quot;: &quot;New York&quot;,
+        &quot;last_activity&quot;: &quot;2021-02-02 01:02:03&quot;,
+        &quot;status&quot;: true
+    },
+    {
+        &quot;id&quot;: 2,
+        &quot;name&quot;: &quot;Device 2&quot;,
+        &quot;serial_number&quot;: &quot;225-234-123&quot;,
+        &quot;ip_address&quot;: &quot;127.0.0.1:8201&quot;,
+        &quot;state&quot;: &quot;New York&quot;,
+        &quot;last_activity&quot;: &quot;2021-02-02 01:02:03&quot;,
+        &quot;status&quot;: true
+    }
+]</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;unauthenticated&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-biotime-devices" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-biotime-devices"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-biotime-devices"></code></pre>
+</span>
+<span id="execution-error-GETapi-biotime-devices" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-biotime-devices"></code></pre>
+</span>
+<form id="form-GETapi-biotime-devices" data-method="GET"
+      data-path="api/biotime/devices"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-biotime-devices', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-biotime-devices"
+                    onclick="tryItOut('GETapi-biotime-devices');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-biotime-devices"
+                    onclick="cancelTryOut('GETapi-biotime-devices');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-biotime-devices" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/biotime/devices</code></b>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <p>
+                <b><code>per_page</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="per_page"
+               data-endpoint="GETapi-biotime-devices"
+               value="10"
+               data-component="query" hidden>
+    <br>
+<p>The perpage number.</p>
+            </p>
+                    <p>
+                <b><code>page</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="page"
+               data-endpoint="GETapi-biotime-devices"
+               value="1"
+               data-component="query" hidden>
+    <br>
+<p>The page number.</p>
+            </p>
+                </form>
+
+            <h2 id="endpoints-GETapi-biotime-departments">Get a list of departments</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-biotime-departments">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/biotime/departments?per_page=10&amp;page=1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/biotime/departments"
+);
+
+const params = {
+    "per_page": "10",
+    "page": "1",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-biotime-departments">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">[
+    {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Software Department&quot;,
+        &quot;code&quot;: &quot;001&quot;,
+        &quot;location&quot;: &quot;1nd Floor, New York&quot;,
+        &quot;parent_dept&quot;: null,
+        &quot;status&quot;: true,
+        &quot;device&quot;: {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Device 1&quot;,
+            &quot;serial_number&quot;: &quot;213-234-123&quot;,
+            &quot;ip_address&quot;: &quot;127.0.0.1:8000&quot;,
+            &quot;area&quot;: &quot;New York&quot;,
+            &quot;last_activity&quot;: &quot;2021-02-02 01:02:03&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Android Department&quot;,
+        &quot;code&quot;: &quot;002&quot;,
+        &quot;location&quot;: &quot;2nd Floor, New York&quot;,
+        &quot;parent_dept&quot;: null,
+        &quot;status&quot;: false,
+        &quot;device&quot;: {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Device 2&quot;,
+            &quot;serial_number&quot;: &quot;223-234-123&quot;,
+            &quot;ip_address&quot;: &quot;127.0.0.12:8000&quot;,
+            &quot;area&quot;: &quot;New York&quot;,
+            &quot;last_activity&quot;: &quot;2021-02-02 01:02:03&quot;
+        }
+    }
+]</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-biotime-departments" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-biotime-departments"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-biotime-departments"></code></pre>
+</span>
+<span id="execution-error-GETapi-biotime-departments" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-biotime-departments"></code></pre>
+</span>
+<form id="form-GETapi-biotime-departments" data-method="GET"
+      data-path="api/biotime/departments"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-biotime-departments', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-biotime-departments"
+                    onclick="tryItOut('GETapi-biotime-departments');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-biotime-departments"
+                    onclick="cancelTryOut('GETapi-biotime-departments');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-biotime-departments" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/biotime/departments</code></b>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <p>
+                <b><code>per_page</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="per_page"
+               data-endpoint="GETapi-biotime-departments"
+               value="10"
+               data-component="query" hidden>
+    <br>
+<p>The perpage number.</p>
+            </p>
+                    <p>
+                <b><code>page</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="page"
+               data-endpoint="GETapi-biotime-departments"
+               value="1"
+               data-component="query" hidden>
+    <br>
+<p>The page number.</p>
+            </p>
+                </form>
+
+            <h2 id="endpoints-GETapi-biotime-employees">Get a list of Employees</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-biotime-employees">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/biotime/employees?per_page=10&amp;page=1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/biotime/employees"
+);
+
+const params = {
+    "per_page": "10",
+    "page": "1",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-biotime-employees">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">[
+    {
+        &quot;id&quot;: 1,
+        &quot;first_name&quot;: &quot;John&quot;,
+        &quot;last_name&quot;: &quot;doe&quot;,
+        &quot;email&quot;: &quot;johndoe@gmail.com&quot;,
+        &quot;contact_number&quot;: &quot;+97709324234&quot;,
+        &quot;gender&quot;: &quot;Male&quot;,
+        &quot;date_of_birth&quot;: &quot;1996-07-04&quot;,
+        &quot;emp_type&quot;: null,
+        &quot;city&quot;: null,
+        &quot;address&quot;: null,
+        &quot;postcode&quot;: null,
+        &quot;avatar_url&quot;: null,
+        &quot;join_date&quot;: null
+    },
+    {
+        &quot;id&quot;: 1,
+        &quot;first_name&quot;: &quot;Mike&quot;,
+        &quot;last_name&quot;: &quot;Typson&quot;,
+        &quot;email&quot;: &quot;miketyson@gmail.com&quot;,
+        &quot;contact_number&quot;: &quot;+97709324234&quot;,
+        &quot;gender&quot;: &quot;Male&quot;,
+        &quot;date_of_birth&quot;: &quot;1998-03-16&quot;,
+        &quot;emp_type&quot;: null,
+        &quot;city&quot;: null,
+        &quot;address&quot;: null,
+        &quot;postcode&quot;: null,
+        &quot;avatar_url&quot;: null,
+        &quot;join_date&quot;: null
+    }
+]</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-biotime-employees" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-biotime-employees"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-biotime-employees"></code></pre>
+</span>
+<span id="execution-error-GETapi-biotime-employees" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-biotime-employees"></code></pre>
+</span>
+<form id="form-GETapi-biotime-employees" data-method="GET"
+      data-path="api/biotime/employees"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-biotime-employees', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-biotime-employees"
+                    onclick="tryItOut('GETapi-biotime-employees');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-biotime-employees"
+                    onclick="cancelTryOut('GETapi-biotime-employees');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-biotime-employees" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/biotime/employees</code></b>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <p>
+                <b><code>per_page</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="per_page"
+               data-endpoint="GETapi-biotime-employees"
+               value="10"
+               data-component="query" hidden>
+    <br>
+<p>The perpage number.</p>
+            </p>
+                    <p>
+                <b><code>page</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="page"
+               data-endpoint="GETapi-biotime-employees"
+               value="1"
+               data-component="query" hidden>
+    <br>
+<p>The page number.</p>
+            </p>
+                </form>
+
+            <h2 id="endpoints-PATCHapi-biotime-devices--device_uuid-">Update Device</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-PATCHapi-biotime-devices--device_uuid-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://127.0.0.1:8000/api/biotime/devices/15" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"Device 1\",
+    \"serial_number\": \"202-123-232\",
+    \"ip_address\": \"127.0.0.1:8000\",
+    \"area\": \"127.0.0.1:8000\",
+    \"last_activity\": \"2021-03-03\",
+    \"status\": true
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/biotime/devices/15"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "Device 1",
+    "serial_number": "202-123-232",
+    "ip_address": "127.0.0.1:8000",
+    "area": "127.0.0.1:8000",
+    "last_activity": "2021-03-03",
+    "status": true
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-biotime-devices--device_uuid-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;status&quot;: 200,
+    &quot;message&quot;: &quot;Device updated successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;unauthenticated&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;No query for the model App\\Model found&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-biotime-devices--device_uuid-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-biotime-devices--device_uuid-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-biotime-devices--device_uuid-"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-biotime-devices--device_uuid-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-biotime-devices--device_uuid-"></code></pre>
+</span>
+<form id="form-PATCHapi-biotime-devices--device_uuid-" data-method="PATCH"
+      data-path="api/biotime/devices/{device_uuid}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-biotime-devices--device_uuid-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-biotime-devices--device_uuid-"
+                    onclick="tryItOut('PATCHapi-biotime-devices--device_uuid-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-biotime-devices--device_uuid-"
+                    onclick="cancelTryOut('PATCHapi-biotime-devices--device_uuid-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-biotime-devices--device_uuid-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/biotime/devices/{device_uuid}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>device_uuid</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="device_uuid"
+               data-endpoint="PATCHapi-biotime-devices--device_uuid-"
+               value="15"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="name"
+               data-endpoint="PATCHapi-biotime-devices--device_uuid-"
+               value="Device 1"
+               data-component="body" hidden>
+    <br>
+<p>The name of the device.</p>
+        </p>
+                <p>
+            <b><code>serial_number</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="serial_number"
+               data-endpoint="PATCHapi-biotime-devices--device_uuid-"
+               value="202-123-232"
+               data-component="body" hidden>
+    <br>
+<p>The serial number of the device.</p>
+        </p>
+                <p>
+            <b><code>ip_address</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="ip_address"
+               data-endpoint="PATCHapi-biotime-devices--device_uuid-"
+               value="127.0.0.1:8000"
+               data-component="body" hidden>
+    <br>
+<p>The ip address of the device.</p>
+        </p>
+                <p>
+            <b><code>area</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="area"
+               data-endpoint="PATCHapi-biotime-devices--device_uuid-"
+               value="127.0.0.1:8000"
+               data-component="body" hidden>
+    <br>
+<p>The area of the device.</p>
+        </p>
+                <p>
+            <b><code>last_activity</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="last_activity"
+               data-endpoint="PATCHapi-biotime-devices--device_uuid-"
+               value="2021-03-03"
+               data-component="body" hidden>
+    <br>
+<p>The last activity date of the device.</p>
+        </p>
+                <p>
+            <b><code>status</code></b>&nbsp;&nbsp;<small>boolean</small>     <i>optional</i> &nbsp;
+                <label data-endpoint="PATCHapi-biotime-devices--device_uuid-" hidden>
+            <input type="radio" name="status"
+                   value="true"
+                   data-endpoint="PATCHapi-biotime-devices--device_uuid-"
+                   data-component="body"
+            >
+            <code>true</code>
+        </label>
+        <label data-endpoint="PATCHapi-biotime-devices--device_uuid-" hidden>
+            <input type="radio" name="status"
+                   value="false"
+                   data-endpoint="PATCHapi-biotime-devices--device_uuid-"
+                   data-component="body"
+            >
+            <code>false</code>
+        </label>
+    <br>
+<p>The status of the device.</p>
+        </p>
+        </form>
+
+            <h2 id="endpoints-POSTapi-biotime-devices">Create a New Device</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-biotime-devices">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/biotime/devices" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"uuid\": \"001\",
+    \"name\": \"Device 1\",
+    \"serial_number\": \"202-123-232\",
+    \"ip_address\": \"127.0.0.1:8000\",
+    \"area\": \"127.0.0.1:8000\",
+    \"last_activity\": \"2021-03-03\",
+    \"status\": true
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/biotime/devices"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "uuid": "001",
+    "name": "Device 1",
+    "serial_number": "202-123-232",
+    "ip_address": "127.0.0.1:8000",
+    "area": "127.0.0.1:8000",
+    "last_activity": "2021-03-03",
+    "status": true
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-biotime-devices">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;status&quot;: 200,
+    &quot;message&quot;: &quot;Device created successfully&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Device 1&quot;,
+        &quot;serial_number&quot;: &quot;213-234-123&quot;,
+        &quot;ip_address&quot;: &quot;127.0.0.1:8000&quot;,
+        &quot;state&quot;: &quot;New York&quot;,
+        &quot;last_activity&quot;: &quot;2021-02-02 01:02:03&quot;,
+        &quot;status&quot;: true
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;unauthenticated&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-biotime-devices" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-biotime-devices"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-biotime-devices"></code></pre>
+</span>
+<span id="execution-error-POSTapi-biotime-devices" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-biotime-devices"></code></pre>
+</span>
+<form id="form-POSTapi-biotime-devices" data-method="POST"
+      data-path="api/biotime/devices"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-biotime-devices', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-biotime-devices"
+                    onclick="tryItOut('POSTapi-biotime-devices');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-biotime-devices"
+                    onclick="cancelTryOut('POSTapi-biotime-devices');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-biotime-devices" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/biotime/devices</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>uuid</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="uuid"
+               data-endpoint="POSTapi-biotime-devices"
+               value="001"
+               data-component="body" hidden>
+    <br>
+<p>The uuid of the device.</p>
+        </p>
+                <p>
+            <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="name"
+               data-endpoint="POSTapi-biotime-devices"
+               value="Device 1"
+               data-component="body" hidden>
+    <br>
+<p>The name of the device.</p>
+        </p>
+                <p>
+            <b><code>serial_number</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="serial_number"
+               data-endpoint="POSTapi-biotime-devices"
+               value="202-123-232"
+               data-component="body" hidden>
+    <br>
+<p>The serial number of the device.</p>
+        </p>
+                <p>
+            <b><code>ip_address</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="ip_address"
+               data-endpoint="POSTapi-biotime-devices"
+               value="127.0.0.1:8000"
+               data-component="body" hidden>
+    <br>
+<p>The ip address of the device.</p>
+        </p>
+                <p>
+            <b><code>area</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="area"
+               data-endpoint="POSTapi-biotime-devices"
+               value="127.0.0.1:8000"
+               data-component="body" hidden>
+    <br>
+<p>The area of the device.</p>
+        </p>
+                <p>
+            <b><code>last_activity</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="last_activity"
+               data-endpoint="POSTapi-biotime-devices"
+               value="2021-03-03"
+               data-component="body" hidden>
+    <br>
+<p>nullable The last activity date of the device.</p>
+        </p>
+                <p>
+            <b><code>status</code></b>&nbsp;&nbsp;<small>boolean</small>     <i>optional</i> &nbsp;
+                <label data-endpoint="POSTapi-biotime-devices" hidden>
+            <input type="radio" name="status"
+                   value="true"
+                   data-endpoint="POSTapi-biotime-devices"
+                   data-component="body"
+            >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-biotime-devices" hidden>
+            <input type="radio" name="status"
+                   value="false"
+                   data-endpoint="POSTapi-biotime-devices"
+                   data-component="body"
+            >
+            <code>false</code>
+        </label>
+    <br>
+<p>The status of the device.</p>
+        </p>
+        </form>
+
+            <h2 id="endpoints-POSTapi-biotime-employees-attendances">Create a Staff Attendance</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-biotime-employees-attendances">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/biotime/employees/attendances" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"device_id\": \"1\",
+    \"employee_id\": \"001\",
+    \"date\": \"2021-03-04\",
+    \"in_time\": \"01:02:03\",
+    \"out_time\": \"02:02:03\",
+    \"remarks\": \"Early leave\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/biotime/employees/attendances"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "device_id": "1",
+    "employee_id": "001",
+    "date": "2021-03-04",
+    "in_time": "01:02:03",
+    "out_time": "02:02:03",
+    "remarks": "Early leave"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-biotime-employees-attendances">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;status&quot;: 201,
+    &quot;message&quot;: &quot;Staff attendance created successfully&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;staff_id&quot;: 1,
+        &quot;date&quot;: &quot;2021-03-03&quot;,
+        &quot;in_time&quot;: &quot;01:02:03&quot;,
+        &quot;out_time&quot;: &quot;02:03:30&quot;,
+        &quot;remarks&quot;: &quot;Early leave&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;unauthenticated&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-biotime-employees-attendances" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-biotime-employees-attendances"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-biotime-employees-attendances"></code></pre>
+</span>
+<span id="execution-error-POSTapi-biotime-employees-attendances" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-biotime-employees-attendances"></code></pre>
+</span>
+<form id="form-POSTapi-biotime-employees-attendances" data-method="POST"
+      data-path="api/biotime/employees/attendances"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-biotime-employees-attendances', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-biotime-employees-attendances"
+                    onclick="tryItOut('POSTapi-biotime-employees-attendances');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-biotime-employees-attendances"
+                    onclick="cancelTryOut('POSTapi-biotime-employees-attendances');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-biotime-employees-attendances" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/biotime/employees/attendances</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>device_id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="device_id"
+               data-endpoint="POSTapi-biotime-employees-attendances"
+               value="1"
+               data-component="body" hidden>
+    <br>
+<p>The id of the device.</p>
+        </p>
+                <p>
+            <b><code>employee_id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="employee_id"
+               data-endpoint="POSTapi-biotime-employees-attendances"
+               value="001"
+               data-component="body" hidden>
+    <br>
+<p>The employee id of the employee.</p>
+        </p>
+                <p>
+            <b><code>date</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="date"
+               data-endpoint="POSTapi-biotime-employees-attendances"
+               value="2021-03-04"
+               data-component="body" hidden>
+    <br>
+<p>The date of the attendance.</p>
+        </p>
+                <p>
+            <b><code>in_time</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="in_time"
+               data-endpoint="POSTapi-biotime-employees-attendances"
+               value="01:02:03"
+               data-component="body" hidden>
+    <br>
+<p>The Enter time of the employee in the office.</p>
+        </p>
+                <p>
+            <b><code>out_time</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="out_time"
+               data-endpoint="POSTapi-biotime-employees-attendances"
+               value="02:02:03"
+               data-component="body" hidden>
+    <br>
+<p>nullable The exit time of the employeee from the office.</p>
+        </p>
+                <p>
+            <b><code>remarks</code></b>&nbsp;&nbsp;<small>nullable</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="remarks"
+               data-endpoint="POSTapi-biotime-employees-attendances"
+               value="Early leave"
+               data-component="body" hidden>
+    <br>
+<p>The remarks of the attendance.</p>
+        </p>
+        </form>
+
+            <h2 id="endpoints-POSTapi-biotime-departments">Create a Department</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-biotime-departments">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/biotime/departments" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"device\": \"eveniet\",
+    \"name\": \"Software Department\",
+    \"code\": \"001\",
+    \"location\": \"New York\",
+    \"device_id\": 1
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/biotime/departments"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "device": "eveniet",
+    "name": "Software Department",
+    "code": "001",
+    "location": "New York",
+    "device_id": 1
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-biotime-departments">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;status&quot;: 200,
+    &quot;message&quot;: &quot;Department created successfully&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;device_id&quot;: 1,
+        &quot;name&quot;: &quot;Software Department&quot;,
+        &quot;code&quot;: &quot;001&quot;,
+        &quot;location&quot;: &quot;1nd Floor, New York&quot;,
+        &quot;parent_dept&quot;: null,
+        &quot;status&quot;: true
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-biotime-departments" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-biotime-departments"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-biotime-departments"></code></pre>
+</span>
+<span id="execution-error-POSTapi-biotime-departments" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-biotime-departments"></code></pre>
+</span>
+<form id="form-POSTapi-biotime-departments" data-method="POST"
+      data-path="api/biotime/departments"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-biotime-departments', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-biotime-departments"
+                    onclick="tryItOut('POSTapi-biotime-departments');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-biotime-departments"
+                    onclick="cancelTryOut('POSTapi-biotime-departments');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-biotime-departments" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/biotime/departments</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>device</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="device"
+               data-endpoint="POSTapi-biotime-departments"
+               value="eveniet"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="name"
+               data-endpoint="POSTapi-biotime-departments"
+               value="Software Department"
+               data-component="body" hidden>
+    <br>
+<p>The name of the department.</p>
+        </p>
+                <p>
+            <b><code>code</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="code"
+               data-endpoint="POSTapi-biotime-departments"
+               value="001"
+               data-component="body" hidden>
+    <br>
+<p>The code of the department.</p>
+        </p>
+                <p>
+            <b><code>location</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="location"
+               data-endpoint="POSTapi-biotime-departments"
+               value="New York"
+               data-component="body" hidden>
+    <br>
+<p>The location of the department.</p>
+        </p>
+                <p>
+            <b><code>device_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="device_id"
+               data-endpoint="POSTapi-biotime-departments"
+               value="1"
+               data-component="body" hidden>
+    <br>
+<p>The id of the device.</p>
+        </p>
+        </form>
+
+            <h2 id="endpoints-POSTapi-biotime-employees">Create a New Employee</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-biotime-employees">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/biotime/employees" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"employee_id\": \"emp-001\",
+    \"email\": \"bette.wintheiser@example.net\",
+    \"department\": 1,
+    \"position\": 1,
+    \"first_name\": \"John\",
+    \"last_name\": \"doe\",
+    \"gender\": \"Male\",
+    \"emp_type\": \"Permanent\",
+    \"phone\": \"98243324234\",
+    \"date_of_birth\": \"1988-03-03\",
+    \"city\": \"New York\",
+    \"address\": \"New York\",
+    \"postcode\": \"44001\",
+    \"join_date\": \"2021-03-04\",
+    \"image\": \"\\/image\\/uplodas\\/imag1.png\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/biotime/employees"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "employee_id": "emp-001",
+    "email": "bette.wintheiser@example.net",
+    "department": 1,
+    "position": 1,
+    "first_name": "John",
+    "last_name": "doe",
+    "gender": "Male",
+    "emp_type": "Permanent",
+    "phone": "98243324234",
+    "date_of_birth": "1988-03-03",
+    "city": "New York",
+    "address": "New York",
+    "postcode": "44001",
+    "join_date": "2021-03-04",
+    "image": "\/image\/uplodas\/imag1.png"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-biotime-employees">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;status&quot;: 200,
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;first_name&quot;: &quot;Mike&quot;,
+        &quot;last_name&quot;: &quot;Typson&quot;,
+        &quot;email&quot;: &quot;miketyson@gmail.com&quot;,
+        &quot;contact_number&quot;: &quot;+97709324234&quot;,
+        &quot;gender&quot;: &quot;Male&quot;,
+        &quot;date_of_birth&quot;: &quot;1998-03-16&quot;,
+        &quot;emp_type&quot;: null,
+        &quot;city&quot;: null,
+        &quot;address&quot;: null,
+        &quot;postcode&quot;: null,
+        &quot;avatar_url&quot;: null,
+        &quot;join_date&quot;: null
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-biotime-employees" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-biotime-employees"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-biotime-employees"></code></pre>
+</span>
+<span id="execution-error-POSTapi-biotime-employees" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-biotime-employees"></code></pre>
+</span>
+<form id="form-POSTapi-biotime-employees" data-method="POST"
+      data-path="api/biotime/employees"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-biotime-employees', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-biotime-employees"
+                    onclick="tryItOut('POSTapi-biotime-employees');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-biotime-employees"
+                    onclick="cancelTryOut('POSTapi-biotime-employees');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-biotime-employees" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/biotime/employees</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>employee_id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="employee_id"
+               data-endpoint="POSTapi-biotime-employees"
+               value="emp-001"
+               data-component="body" hidden>
+    <br>
+<p>The employee id of the employee.</p>
+        </p>
+                <p>
+            <b><code>email</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="email"
+               data-endpoint="POSTapi-biotime-employees"
+               value="bette.wintheiser@example.net"
+               data-component="body" hidden>
+    <br>
+<p>Must be a valid email address.</p>
+        </p>
+                <p>
+            <b><code>department</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="department"
+               data-endpoint="POSTapi-biotime-employees"
+               value="1"
+               data-component="body" hidden>
+    <br>
+<p>The id of the department.</p>
+        </p>
+                <p>
+            <b><code>position</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="position"
+               data-endpoint="POSTapi-biotime-employees"
+               value="1"
+               data-component="body" hidden>
+    <br>
+<p>The id of the position.</p>
+        </p>
+                <p>
+            <b><code>first_name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="first_name"
+               data-endpoint="POSTapi-biotime-employees"
+               value="John"
+               data-component="body" hidden>
+    <br>
+<p>The first name of the employee.</p>
+        </p>
+                <p>
+            <b><code>last_name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="last_name"
+               data-endpoint="POSTapi-biotime-employees"
+               value="doe"
+               data-component="body" hidden>
+    <br>
+<p>The last name of the emmployee.</p>
+        </p>
+                <p>
+            <b><code>gender</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="gender"
+               data-endpoint="POSTapi-biotime-employees"
+               value="Male"
+               data-component="body" hidden>
+    <br>
+<p>nullable The gender of the emmployee(Male, Female, Other).</p>
+        </p>
+                <p>
+            <b><code>emp_type</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="emp_type"
+               data-endpoint="POSTapi-biotime-employees"
+               value="Permanent"
+               data-component="body" hidden>
+    <br>
+<p>nullable The emmployee type of the emmployee.</p>
+        </p>
+                <p>
+            <b><code>phone</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="phone"
+               data-endpoint="POSTapi-biotime-employees"
+               value="98243324234"
+               data-component="body" hidden>
+    <br>
+<p>nullable The contact number of the emmployee.</p>
+        </p>
+                <p>
+            <b><code>date_of_birth</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="date_of_birth"
+               data-endpoint="POSTapi-biotime-employees"
+               value="1988-03-03"
+               data-component="body" hidden>
+    <br>
+<p>nullable The date of birth of the emmployee.</p>
+        </p>
+                <p>
+            <b><code>city</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="city"
+               data-endpoint="POSTapi-biotime-employees"
+               value="New York"
+               data-component="body" hidden>
+    <br>
+<p>nullable The last name of the emmployee.</p>
+        </p>
+                <p>
+            <b><code>address</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="address"
+               data-endpoint="POSTapi-biotime-employees"
+               value="New York"
+               data-component="body" hidden>
+    <br>
+<p>nullable The last name of the emmployee.</p>
+        </p>
+                <p>
+            <b><code>postcode</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="postcode"
+               data-endpoint="POSTapi-biotime-employees"
+               value="44001"
+               data-component="body" hidden>
+    <br>
+<p>nullable The last name of the emmployee.</p>
+        </p>
+                <p>
+            <b><code>join_date</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="join_date"
+               data-endpoint="POSTapi-biotime-employees"
+               value="2021-03-04"
+               data-component="body" hidden>
+    <br>
+<p>nullable The last name of the emmployee.</p>
+        </p>
+                <p>
+            <b><code>image</code></b>&nbsp;&nbsp;<small>image</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="image"
+               data-endpoint="POSTapi-biotime-employees"
+               value="/image/uplodas/imag1.png"
+               data-component="body" hidden>
+    <br>
+<p>nullable The last name of the emmployee.</p>
+        </p>
+                <p>
+            <b><code>national_id</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="national_id"
+               data-endpoint="POSTapi-biotime-employees"
+               value=""
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>documents</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="documents"
+               data-endpoint="POSTapi-biotime-employees"
+               value=""
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>contract</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="contract"
+               data-endpoint="POSTapi-biotime-employees"
+               value=""
+               data-component="body" hidden>
+    <br>
+
+        </p>
+        </form>
+
+    
+
+        
+    </div>
+    <div class="dark-box">
+                    <div class="lang-selector">
+                                                        <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                                        <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                            </div>
+            </div>
+</div>
+</body>
+</html>

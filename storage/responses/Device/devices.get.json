@@ -1,0 +1,20 @@
+[
+    {
+        "id" : 1,
+        "name" : "Device 1",
+        "serial_number" : "213-234-123",
+        "ip_address" : "127.0.0.1:8000",
+        "state" : "New York",
+        "last_activity" : "2021-02-02 01:02:03",
+        "status": true
+    },
+    {
+        "id" : 2,
+        "name" : "Device 2",
+        "serial_number" : "225-234-123",
+        "ip_address" : "127.0.0.1:8201",
+        "state" : "New York",
+        "last_activity" : "2021-02-02 01:02:03",
+        "status": true
+    }
+]

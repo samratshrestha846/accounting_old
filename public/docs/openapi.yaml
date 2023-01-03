@@ -1,0 +1,1003 @@
+openapi: 3.0.3
+info:
+  title: LekhaBidhi
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://127.0.0.1:8000'
+paths:
+  /api/biotime/login:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: blake.weissnat@example.net
+                password:
+                  type: string
+                  description: ''
+                  example: eveniet
+              required:
+                - email
+                - password
+      security: []
+  /api/biotime/positions:
+    get:
+      summary: 'Get a list of Position'
+      description: ''
+      parameters:
+        -
+          in: query
+          name: per_page
+          description: 'The perpage number.'
+          example: 10
+          required: false
+          schema:
+            type: integer
+            description: 'The perpage number.'
+            example: 10
+        -
+          in: query
+          name: page
+          description: 'The page number.'
+          example: 1
+          required: false
+          schema:
+            type: integer
+            description: 'The page number.'
+            example: 1
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                example:
+                  -
+                    id: 1
+                    name: Android
+                  -
+                    id: 1
+                    name: Manager
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Create a Position'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: false
+                  status: 200
+                  data:
+                    id: 1
+                    name: Android
+                    slug: android
+                    status: true
+                    created_at: '2019-02-01'
+                    updated_at: '2021-02-02'
+                properties:
+                  error:
+                    type: boolean
+                    example: false
+                  status:
+                    type: integer
+                    example: 200
+                  data:
+                    type: object
+                    example:
+                      id: 1
+                      name: Android
+                      slug: android
+                      status: true
+                      created_at: '2019-02-01'
+                      updated_at: '2021-02-02'
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of the position.'
+                  example: 'Software Department'
+                status:
+                  type: string
+                  description: 'Must be between 0 and 1 digits.'
+                  example: ''
+              required:
+                - name
+      security: []
+  /api/biotime/devices:
+    get:
+      summary: 'Get a list of devices'
+      description: ''
+      parameters:
+        -
+          in: query
+          name: per_page
+          description: 'The perpage number.'
+          example: 10
+          required: false
+          schema:
+            type: integer
+            description: 'The perpage number.'
+            example: 10
+        -
+          in: query
+          name: page
+          description: 'The page number.'
+          example: 1
+          required: false
+          schema:
+            type: integer
+            description: 'The page number.'
+            example: 1
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                example:
+                  -
+                    id: 1
+                    name: 'Device 1'
+                    serial_number: 213-234-123
+                    ip_address: '127.0.0.1:8000'
+                    state: 'New York'
+                    last_activity: '2021-02-02 01:02:03'
+                    status: true
+                  -
+                    id: 2
+                    name: 'Device 2'
+                    serial_number: 225-234-123
+                    ip_address: '127.0.0.1:8201'
+                    state: 'New York'
+                    last_activity: '2021-02-02 01:02:03'
+                    status: true
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: unauthenticated
+                properties:
+                  message:
+                    type: string
+                    example: unauthenticated
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Create a New Device'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: false
+                  status: 200
+                  message: 'Device created successfully'
+                  data:
+                    id: 1
+                    name: 'Device 1'
+                    serial_number: 213-234-123
+                    ip_address: '127.0.0.1:8000'
+                    state: 'New York'
+                    last_activity: '2021-02-02 01:02:03'
+                    status: true
+                properties:
+                  error:
+                    type: boolean
+                    example: false
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: 'Device created successfully'
+                  data:
+                    type: object
+                    example:
+                      id: 1
+                      name: 'Device 1'
+                      serial_number: 213-234-123
+                      ip_address: '127.0.0.1:8000'
+                      state: 'New York'
+                      last_activity: '2021-02-02 01:02:03'
+                      status: true
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: unauthenticated
+                properties:
+                  message:
+                    type: string
+                    example: unauthenticated
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                uuid:
+                  type: string
+                  description: 'The uuid of the device.'
+                  example: '001'
+                name:
+                  type: string
+                  description: 'The name of the device.'
+                  example: 'Device 1'
+                serial_number:
+                  type: string
+                  description: 'The serial number of the device.'
+                  example: 202-123-232
+                ip_address:
+                  type: string
+                  description: 'The ip address of the device.'
+                  example: '127.0.0.1:8000'
+                area:
+                  type: string
+                  description: 'The area of the device.'
+                  example: '127.0.0.1:8000'
+                last_activity:
+                  type: string
+                  description: 'nullable The last activity date of the device.'
+                  example: '2021-03-03'
+                status:
+                  type: boolean
+                  description: 'The status of the device.'
+                  example: true
+              required:
+                - uuid
+                - name
+                - serial_number
+                - ip_address
+                - area
+      security: []
+  /api/biotime/departments:
+    get:
+      summary: 'Get a list of departments'
+      description: ''
+      parameters:
+        -
+          in: query
+          name: per_page
+          description: 'The perpage number.'
+          example: 10
+          required: false
+          schema:
+            type: integer
+            description: 'The perpage number.'
+            example: 10
+        -
+          in: query
+          name: page
+          description: 'The page number.'
+          example: 1
+          required: false
+          schema:
+            type: integer
+            description: 'The page number.'
+            example: 1
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                example:
+                  -
+                    id: 1
+                    name: 'Software Department'
+                    code: '001'
+                    location: '1nd Floor, New York'
+                    parent_dept: null
+                    status: true
+                    device:
+                      id: 1
+                      name: 'Device 1'
+                      serial_number: 213-234-123
+                      ip_address: '127.0.0.1:8000'
+                      area: 'New York'
+                      last_activity: '2021-02-02 01:02:03'
+                  -
+                    id: 1
+                    name: 'Android Department'
+                    code: '002'
+                    location: '2nd Floor, New York'
+                    parent_dept: null
+                    status: false
+                    device:
+                      id: 1
+                      name: 'Device 2'
+                      serial_number: 223-234-123
+                      ip_address: '127.0.0.12:8000'
+                      area: 'New York'
+                      last_activity: '2021-02-02 01:02:03'
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Create a Department'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: false
+                  status: 200
+                  message: 'Department created successfully'
+                  data:
+                    id: 1
+                    device_id: 1
+                    name: 'Software Department'
+                    code: '001'
+                    location: '1nd Floor, New York'
+                    parent_dept: null
+                    status: true
+                properties:
+                  error:
+                    type: boolean
+                    example: false
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: 'Department created successfully'
+                  data:
+                    type: object
+                    example:
+                      id: 1
+                      device_id: 1
+                      name: 'Software Department'
+                      code: '001'
+                      location: '1nd Floor, New York'
+                      parent_dept: null
+                      status: true
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                device:
+                  type: string
+                  description: ''
+                  example: eveniet
+                name:
+                  type: string
+                  description: 'The name of the department.'
+                  example: 'Software Department'
+                code:
+                  type: string
+                  description: 'The code of the department.'
+                  example: '001'
+                location:
+                  type: string
+                  description: 'The location of the department.'
+                  example: 'New York'
+                device_id:
+                  type: integer
+                  description: 'The id of the device.'
+                  example: 1
+              required:
+                - device
+                - name
+                - code
+                - location
+                - device_id
+      security: []
+  /api/biotime/employees:
+    get:
+      summary: 'Get a list of Employees'
+      description: ''
+      parameters:
+        -
+          in: query
+          name: per_page
+          description: 'The perpage number.'
+          example: 10
+          required: false
+          schema:
+            type: integer
+            description: 'The perpage number.'
+            example: 10
+        -
+          in: query
+          name: page
+          description: 'The page number.'
+          example: 1
+          required: false
+          schema:
+            type: integer
+            description: 'The page number.'
+            example: 1
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                example:
+                  -
+                    id: 1
+                    first_name: John
+                    last_name: doe
+                    email: johndoe@gmail.com
+                    contact_number: '+97709324234'
+                    gender: Male
+                    date_of_birth: '1996-07-04'
+                    emp_type: null
+                    city: null
+                    address: null
+                    postcode: null
+                    avatar_url: null
+                    join_date: null
+                  -
+                    id: 1
+                    first_name: Mike
+                    last_name: Typson
+                    email: miketyson@gmail.com
+                    contact_number: '+97709324234'
+                    gender: Male
+                    date_of_birth: '1998-03-16'
+                    emp_type: null
+                    city: null
+                    address: null
+                    postcode: null
+                    avatar_url: null
+                    join_date: null
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Create a New Employee'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: false
+                  status: 200
+                  data:
+                    id: 1
+                    first_name: Mike
+                    last_name: Typson
+                    email: miketyson@gmail.com
+                    contact_number: '+97709324234'
+                    gender: Male
+                    date_of_birth: '1998-03-16'
+                    emp_type: null
+                    city: null
+                    address: null
+                    postcode: null
+                    avatar_url: null
+                    join_date: null
+                properties:
+                  error:
+                    type: boolean
+                    example: false
+                  status:
+                    type: integer
+                    example: 200
+                  data:
+                    type: object
+                    example:
+                      id: 1
+                      first_name: Mike
+                      last_name: Typson
+                      email: miketyson@gmail.com
+                      contact_number: '+97709324234'
+                      gender: Male
+                      date_of_birth: '1998-03-16'
+                      emp_type: null
+                      city: null
+                      address: null
+                      postcode: null
+                      avatar_url: null
+                      join_date: null
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                employee_id:
+                  type: string
+                  description: 'The employee id of the employee.'
+                  example: emp-001
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: bette.wintheiser@example.net
+                department:
+                  type: integer
+                  description: 'The id of the department.'
+                  example: 1
+                position:
+                  type: integer
+                  description: 'The id of the position.'
+                  example: 1
+                first_name:
+                  type: string
+                  description: 'The first name of the employee.'
+                  example: John
+                last_name:
+                  type: string
+                  description: 'The last name of the emmployee.'
+                  example: doe
+                gender:
+                  type: string
+                  description: 'nullable The gender of the emmployee(Male, Female, Other).'
+                  example: Male
+                emp_type:
+                  type: string
+                  description: 'nullable The emmployee type of the emmployee.'
+                  example: Permanent
+                phone:
+                  type: string
+                  description: 'nullable The contact number of the emmployee.'
+                  example: '98243324234'
+                date_of_birth:
+                  type: string
+                  description: 'nullable The date of birth of the emmployee.'
+                  example: '1988-03-03'
+                city:
+                  type: string
+                  description: 'nullable The last name of the emmployee.'
+                  example: 'New York'
+                address:
+                  type: string
+                  description: 'nullable The last name of the emmployee.'
+                  example: 'New York'
+                postcode:
+                  type: string
+                  description: 'nullable The last name of the emmployee.'
+                  example: '44001'
+                join_date:
+                  type: string
+                  description: 'nullable The last name of the emmployee.'
+                  example: '2021-03-04'
+                image:
+                  type: image
+                  description: 'nullable The last name of the emmployee.'
+                  example: /image/uplodas/imag1.png
+                national_id:
+                  type: string
+                  description: ''
+                  example: null
+                documents:
+                  type: string
+                  description: ''
+                  example: null
+                contract:
+                  type: string
+                  description: ''
+                  example: null
+              required:
+                - employee_id
+                - email
+                - department
+                - position
+                - first_name
+                - last_name
+      security: []
+  '/api/biotime/devices/{device_uuid}':
+    patch:
+      summary: 'Update Device'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: false
+                  status: 200
+                  message: 'Device updated successfully'
+                properties:
+                  error:
+                    type: boolean
+                    example: false
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: 'Device updated successfully'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: unauthenticated
+                properties:
+                  message:
+                    type: string
+                    example: unauthenticated
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'No query for the model App\Model found'
+                properties:
+                  message:
+                    type: string
+                    example: 'No query for the model App\Model found'
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of the device.'
+                  example: 'Device 1'
+                serial_number:
+                  type: string
+                  description: 'The serial number of the device.'
+                  example: 202-123-232
+                ip_address:
+                  type: string
+                  description: 'The ip address of the device.'
+                  example: '127.0.0.1:8000'
+                area:
+                  type: string
+                  description: 'The area of the device.'
+                  example: '127.0.0.1:8000'
+                last_activity:
+                  type: string
+                  description: 'The last activity date of the device.'
+                  example: '2021-03-03'
+                status:
+                  type: boolean
+                  description: 'The status of the device.'
+                  example: true
+              required:
+                - name
+                - serial_number
+                - ip_address
+                - area
+                - last_activity
+      security: []
+    parameters:
+      -
+        in: path
+        name: device_uuid
+        description: ''
+        example: 15
+        required: true
+        schema:
+          type: integer
+  /api/biotime/employees/attendances:
+    post:
+      summary: 'Create a Staff Attendance'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: false
+                  status: 201
+                  message: 'Staff attendance created successfully'
+                  data:
+                    id: 1
+                    staff_id: 1
+                    date: '2021-03-03'
+                    in_time: '01:02:03'
+                    out_time: '02:03:30'
+                    remarks: 'Early leave'
+                properties:
+                  error:
+                    type: boolean
+                    example: false
+                  status:
+                    type: integer
+                    example: 201
+                  message:
+                    type: string
+                    example: 'Staff attendance created successfully'
+                  data:
+                    type: object
+                    example:
+                      id: 1
+                      staff_id: 1
+                      date: '2021-03-03'
+                      in_time: '01:02:03'
+                      out_time: '02:03:30'
+                      remarks: 'Early leave'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: unauthenticated
+                properties:
+                  message:
+                    type: string
+                    example: unauthenticated
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                device_id:
+                  type: string
+                  description: 'The id of the device.'
+                  example: '1'
+                employee_id:
+                  type: string
+                  description: 'The employee id of the employee.'
+                  example: '001'
+                date:
+                  type: string
+                  description: 'The date of the attendance.'
+                  example: '2021-03-04'
+                in_time:
+                  type: string
+                  description: 'The Enter time of the employee in the office.'
+                  example: '01:02:03'
+                out_time:
+                  type: string
+                  description: 'nullable The exit time of the employeee from the office.'
+                  example: '02:02:03'
+                remarks:
+                  type: nullable
+                  description: 'The remarks of the attendance.'
+                  example: 'Early leave'
+              required:
+                - device_id
+                - employee_id
+                - date
+                - in_time
+      security: []
+tags:
+  -
+    name: Endpoints
+    description: ''

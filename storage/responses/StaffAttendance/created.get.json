@@ -1,0 +1,13 @@
+{
+    "error": false,
+    "status": 201,
+    "message": "Staff attendance created successfully",
+    "data": {
+        "id" : 1,
+        "staff_id" : 1,
+        "date" : "2021-03-03",
+        "in_time" : "01:02:03",
+        "out_time": "02:03:30",
+        "remarks": "Early leave"
+    }
+}

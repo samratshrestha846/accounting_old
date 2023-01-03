@@ -1,0 +1,98 @@
+@media(max-width: 1199px){
+	.toggle-btn{
+		display: block;
+	}
+	.desktop-only{
+		display: none;
+	}
+	.mobile-only {
+		display: block;
+	}
+	.hr-mobile {
+		display: flex;
+		align-items: center;
+	}
+	.collapse:not(.show){
+		display: block;
+	}
+	.accounts.mobile-only i {
+		font-size: 25px;
+		color: #5c5c5c;
+	}
+	.dropdown-toggle::after{
+		display: none;
+	}
+	.time.mobile-only {
+		padding: 15px 20px;
+	}
+	.main-btns{
+		margin-right: 0;
+	}
+	.header-btns{
+		padding: 0 20px 20px 20px;
+		display: block;
+	}
+	.main-btns{
+		display: block;
+	}
+	.main-btns a{
+		width: 100%;
+		text-align: center;
+	}
+	.main-btns a +a{
+		margin-left: 0;
+		margin-top: 10px;
+	}
+	.time span{
+		font-size: 13px;
+	}
+	.pos-sidebar{
+		margin-bottom: 15px;
+	}
+	.hr-mobile {
+		display: flex;
+	}
+}
+
+@media(max-width: 991px) {
+
+}
+
+@media(max-width: 767px) {
+	.pos-sidebar table td{
+		white-space: nowrap;
+	}
+	.pos-sidebar table th{
+		white-space: nowrap;
+	}
+}
+
+@media(max-width: 575px) {
+	.logo img{
+		max-width: 180px;
+	}
+	.pos-main .padding{
+		width: 50%;
+	}
+	.pos-main .nav-item{
+		width: 100%;
+	}
+	.pos-sidebar .col-xs-10{
+		width: 83.33333333%;
+	}
+	.pos-sidebar .col-xs-2{
+		width: 16.66666667%;
+	}
+	.input-btn {
+		text-align: right;
+	}
+	.pos-main .nav-tabs .nav-link{
+		padding: 3px 10px;
+	}
+}
+
+
+
+
+
+

@@ -1,0 +1,34 @@
+[
+    {
+        "id" : 1,
+        "name" : "Software Department",
+        "code" : "001",
+        "location" : "1nd Floor, New York",
+        "parent_dept": null,
+        "status": true,
+        "device": {
+            "id" : 1,
+            "name" : "Device 1",
+            "serial_number" : "213-234-123",
+            "ip_address" : "127.0.0.1:8000",
+            "area" : "New York",
+            "last_activity" : "2021-02-02 01:02:03"
+        }
+    },
+    {
+        "id" : 1,
+        "name" : "Android Department",
+        "code" : "002",
+        "location" : "2nd Floor, New York",
+        "parent_dept": null,
+        "status": false,
+        "device": {
+            "id" : 1,
+            "name" : "Device 2",
+            "serial_number" : "223-234-123",
+            "ip_address" : "127.0.0.12:8000",
+            "area" : "New York",
+            "last_activity" : "2021-02-02 01:02:03"
+        }
+    }
+]
